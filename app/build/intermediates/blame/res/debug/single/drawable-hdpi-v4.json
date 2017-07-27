@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\resolution_switch_corner_bg.xml",
+        "source": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\resolution_switch_corner_bg.xml"
+    },
+    {
+        "merged": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\selector_stretch.xml",
+        "source": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\selector_stretch.xml"
+    },
+    {
+        "merged": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\resolution_switch_corner_bg.xml",
+        "source": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\resolution_switch_corner_bg.xml"
+    },
+    {
+        "merged": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\scrubber_progress_horizontal_holo_dark.xml",
+        "source": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\scrubber_progress_horizontal_holo_dark.xml"
+    },
+    {
+        "merged": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\selector_stretch.xml",
+        "source": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\selector_stretch.xml"
+    },
+    {
+        "merged": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\scrubber_progress_horizontal_holo_dark.xml",
+        "source": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\scrubber_progress_horizontal_holo_dark.xml"
+    },
+    {
+        "merged": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\thumb_bar.xml",
+        "source": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\thumb_bar.xml"
+    },
+    {
+        "merged": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\scrubber_control_selector_holo.xml",
+        "source": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\scrubber_control_selector_holo.xml"
+    },
+    {
+        "merged": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\thumb_bar.xml",
+        "source": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\thumb_bar.xml"
+    },
+    {
+        "merged": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\scrubber_control_selector_holo.xml",
+        "source": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\scrubber_control_selector_holo.xml"
+    },
+    {
+        "merged": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_bar.xml",
+        "source": "E:\\Users\\gaolei\\Work\\Note\\Github Project\\VideoSubtitle\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\bg_bar.xml"
+    },
+    {
+        "merged": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_bar.xml",
+        "source": "E:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\src\\main\\res\\drawable-hdpi\\bg_bar.xml"
+    }
+]

@@ -1,0 +1,4 @@
+#Thu Jul 27 21:00:28 GMT+08:00 2017
+base.0=E\:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=E\:\\product_android2\\VideoSubtitle-master\\Subtitle\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
