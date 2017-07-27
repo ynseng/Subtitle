@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.text.ClipboardManager;
 import android.text.Spannable;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
@@ -478,7 +479,10 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 								tv.getSelectionEnd()).toString();
 				Log.d("tapped on:", s);
 				Log.v("test123", s);
-				Toast.makeText( SubtitleActivity.this, "点击成功: " + s, Toast.LENGTH_SHORT).show();
+				Toast.makeText( SubtitleActivity.this, "翻译成功: " + s, Toast.LENGTH_SHORT).show();
+				ClipboardManager cmb = (ClipboardManager) SubtitleActivity.this
+						.getSystemService(Context.CLIPBOARD_SERVICE);
+				cmb.setText(s);
 			}
 			@Override
 			public void updateDrawState(TextPaint ds) {
