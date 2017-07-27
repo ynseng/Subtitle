@@ -407,15 +407,48 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 		}, 5000);
 //		}
 	}
+
+	int count = 0;
+	long firClick = 0;
+	long secClick = 0;
+
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
+
 		// TODO Auto-generated method stub
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN: {
 				showOrHideController();
+				updatePausePlay();
+				//Toast.makeText( SubtitleActivity.this, "单击事件", Toast.LENGTH_SHORT).show();
 				break;
 			}
 		}
+
+
+		//双击的功能不太好使
+		/*if(MotionEvent.ACTION_DOWN == event.getAction()){
+			count++;
+			if(count == 1){
+				showOrHideController();
+				firClick = System.currentTimeMillis();
+
+			} else if (count == 2){
+				showOrHideController();
+				secClick = System.currentTimeMillis();
+				if(secClick - firClick < 1000){
+					//双击事件
+					Toast.makeText( SubtitleActivity.this, "双击事件", Toast.LENGTH_SHORT).show();
+					updatePausePlay();
+				}
+				count = 0;
+				firClick = 0;
+				secClick = 0;
+
+			}
+		}*/
+
+
 		return false;
 	}
 	@Override
@@ -446,7 +479,6 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 		mediacontroller_play_pause.setImageResource(R.drawable.player_pause);
 
 	}
-
 
 
 	//获取单个textview的单词
