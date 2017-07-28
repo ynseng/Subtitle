@@ -5,11 +5,17 @@
     >
 
 
+    <RelativeLayout
+        android:id="@+id/configPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/videoview_layout"
+        android:layout_margin="5dp">
+
     <EditText
         android:id="@+id/videoPath"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:hint="请输入本地视频地址!"
         android:textSize="26px"/>
     <EditText
@@ -24,6 +30,7 @@
         android:text="加载"
         android:layout_below="@+id/zimuPath"
         android:layout_width="wrap_content"
+        android:onClick="loadPath"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/screenBtn"
@@ -31,7 +38,35 @@
         android:layout_below="@+id/zimuPath"
         android:layout_width="wrap_content"
         android:layout_toRightOf="@+id/loadPathBtn"
+        android:onClick="switchScreen"
         android:layout_height="wrap_content" />
+    <Button
+        android:text="选择视频"
+        android:id="@+id/chooserVideoBtn"
+        android:layout_below="@+id/zimuPath"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/screenBtn"
+        android:onClick="showVideoChooser"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="选择字幕"
+        android:id="@+id/chooserZimuBtn"
+        android:layout_below="@+id/zimuPath"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/chooserVideoBtn"
+        android:onClick="showZimuChooser"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="复制整句"
+        android:layout_below="@+id/zimuPath"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/chooserZimuBtn"
+        android:onClick="copyOneContent"
+        android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
 
     <!--<Button
         android:layout_width="wrap_content"
@@ -64,7 +99,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="5dp"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="51dp"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 

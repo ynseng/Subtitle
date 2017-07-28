@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -36,6 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -43,6 +45,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import viewlp.MainActivity;
+
 /**
  * 1、实现匹配srt字幕
  * 2、设置ActivityInfo的sensor来实现横竖屏，然后进行VideoView的大小屏切换，即使横竖屏切换被禁止也能用，
@@ -165,24 +168,109 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 			}
 		});
 
-		/*File f=new File(uri.getPath());
-		if(!f.exists()){
-			Log.v("test123","不存在"+uri.getPath());
-		}else{
-			Log.v("test123","存在"+uri.getPath());
-		}*/
 
 		//设置视频路径
+		/*videoView.setVideoURI(uri);
+		//开始播放视频
+		videoView.start();
+		SrtParser.parseSrt(this);
+		SrtParser.showSRT(videoView,tvSrt) ;
+
+		mHandler.sendEmptyMessageDelayed(0, 500);*/
+
+		initVideoResolution();
+	}
+
+
+	public void loadPath(View view) {
+		EditText videoPath = (EditText)findViewById(R.id.videoPath);
+		EditText zimuPath = (EditText)findViewById(R.id.zimuPath);
+		//Uri uri = Uri.parse("/storage/emulated/0/privatefile/"+et.getText());
+		Constant.videoUrl1 = videoPath.getText() + "";
+		Constant.srtUrl1 = zimuPath.getText() + "";
+
+
+		//设置视频路径
+		Uri uri = Uri.parse(Constant.videoUrl1);
 		videoView.setVideoURI(uri);
+
+		File f=new File(uri.getPath());
+		if(!f.exists()){
+			Toast.makeText( SubtitleActivity.this, "不存在"+uri.getPath(), Toast.LENGTH_SHORT).show();
+		}else{
+			Toast.makeText( SubtitleActivity.this, "视频加载成功", Toast.LENGTH_SHORT).show();
+		}
+
+
 		//开始播放视频
 		videoView.start();
 		SrtParser.parseSrt(this);
 		SrtParser.showSRT(videoView,tvSrt) ;
 
 		mHandler.sendEmptyMessageDelayed(0, 500);
-
-		initVideoResolution();
 	}
+
+	//选择视频文件
+	public void showVideoChooser(View view) {
+		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+		intent.setType("*/*");
+		intent.addCategory(Intent.CATEGORY_OPENABLE);
+		try {
+			startActivityForResult( Intent.createChooser(intent, "Select a File to Upload"), 0);
+		} catch (android.content.ActivityNotFoundException ex) {
+			// Potentially direct the user to the Market with a Dialog
+			Toast.makeText(this, "Please install a File Manager.", Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	//选择字幕文件
+	public void showZimuChooser(View view) {
+		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+		intent.setType("*/*");
+		intent.addCategory(Intent.CATEGORY_OPENABLE);
+		try {
+			startActivityForResult( Intent.createChooser(intent, "Select a File to Upload"), 1);
+		} catch (android.content.ActivityNotFoundException ex) {
+			// Potentially direct the user to the Market with a Dialog
+			Toast.makeText(this, "Please install a File Manager.", Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	//复制整句
+	public void copyOneContent(View view) {
+		TextView srt = (TextView)findViewById(R.id.srt);
+		ClipboardManager cmb = (ClipboardManager) SubtitleActivity.this
+				.getSystemService(Context.CLIPBOARD_SERVICE);
+		cmb.setText(srt.getText());
+		Toast.makeText( SubtitleActivity.this, "复制整句成功: " + srt.getText(), Toast.LENGTH_SHORT).show();
+	}
+
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (requestCode) {
+			case 0:
+				if (resultCode == RESULT_OK) {
+					Uri uri = data.getData();
+					String path = FileUtils.getPathByUri4kitkat(this, uri);
+					EditText videoPath = (EditText)findViewById(R.id.videoPath);
+					videoPath.setText(path);
+				}
+				break;
+			case 1:
+				if (resultCode == RESULT_OK) {
+					Uri uri = data.getData();
+					String path = FileUtils.getPathByUri4kitkat(this, uri);
+					EditText videoPath = (EditText)findViewById(R.id.zimuPath);
+					videoPath.setText(path);
+				}
+				break;
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+
+
 	private void initVideoResolution(){
 		VideoPathObject object1=new VideoPathObject();
 		object1.videoStatus="超清";
@@ -333,20 +421,26 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 	}
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
+		RelativeLayout layout_1 = (RelativeLayout) findViewById(R.id.configPath);
 		if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			layout_1.setVisibility(View.GONE);//这一句即隐藏布局LinearLayout区域
 			changeToFullScreen();
 			Log.d("gaolei", "ORIENTATION_LANDSCAPE-------------");
 		}
 		if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+			layout_1.setVisibility(View.VISIBLE);//这一句即隐藏布局LinearLayout区域
 			changeToSmallScreen();
 			Log.d("gaolei", "ORIENTATION_PORTRAIT-------------");
 		}
 	}
 
 	public void switchScreen(View view) {
+		RelativeLayout layout_1 = (RelativeLayout) findViewById(R.id.configPath);
 		if (isPortraint) {
+			layout_1.setVisibility(View.GONE);//这一句即隐藏布局LinearLayout区域
 			handToFullScreen();
 		} else {
+			layout_1.setVisibility(View.VISIBLE);//这一句即隐藏布局LinearLayout区域
 			handToSmallScreen();
 		}
 	}

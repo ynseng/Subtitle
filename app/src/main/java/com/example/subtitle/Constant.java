@@ -6,4 +6,5 @@ public class Constant {
 //	public static String videoUrl1 = Environment.getExternalStorageDirectory().getPath()+"/f2.mp4" ;
 	public static String srtUrl1 = "/storage/emulated/0/privatefile/testhw.srt";
 //	public static String srtUrl1 = Environment.getExternalStorageDirectory().getPath()+"/f2.srt" ;
+
 }
