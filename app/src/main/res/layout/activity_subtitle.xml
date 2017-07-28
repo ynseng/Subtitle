@@ -3,7 +3,37 @@
     android:layout_height="match_parent"
     android:background="#bbffffff"
     >
+
+
+    <EditText
+        android:id="@+id/videoPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:hint="请输入本地视频地址!"
+        android:textSize="26px"/>
+    <EditText
+        android:id="@+id/zimuPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/videoPath"
+        android:hint="请输入本地字幕地址!"
+        android:textSize="26px"/>
     <Button
+        android:id="@+id/loadPathBtn"
+        android:text="加载"
+        android:layout_below="@+id/zimuPath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/screenBtn"
+        android:text="全屏"
+        android:layout_below="@+id/zimuPath"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/loadPathBtn"
+        android:layout_height="wrap_content" />
+
+    <!--<Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -14,7 +44,7 @@
         android:padding="10dp"
         android:text="跳转到下个Activity\n通过感应器来判断横竖屏"
         android:textColor="#99000000"
-        android:textSize="16sp" />
+        android:textSize="16sp" />-->
     <RelativeLayout
         android:id="@+id/videoview_layout"
         android:layout_width="match_parent"
