@@ -41,8 +41,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import viewlp.MainActivity;
 
@@ -446,7 +444,7 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 	}
 
 	public void handToSmallScreen() {
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		changeToSmallScreen();
 		/**
 		 * 这里点击按钮转屏，用户5秒内不转屏幕，将自动识别当前屏幕方向
@@ -455,7 +453,7 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 	}
 
 	public void handToFullScreen() {
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		changeToFullScreen();
 		autoSwitchScreenOrientation();
 	}
@@ -492,13 +490,13 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 
 	public void autoSwitchScreenOrientation() {
 //		if (LockScreen == 1) {
-		new Timer().schedule(new TimerTask() {
+		/*new Timer().schedule(new TimerTask() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
 				Log.d("gaolei", "SCREEN_ORIENTATION_FULL_SENSOR");				}
-		}, 5000);
+		}, 5000);*/
 //		}
 	}
 
