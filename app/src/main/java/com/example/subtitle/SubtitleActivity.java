@@ -294,6 +294,7 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 
 	private OnSeekBarChangeListener mSeekListener = new OnSeekBarChangeListener() {
 		public void onStartTrackingTouch(SeekBar bar) {
+			SrtParser.restoreSrtList();
 			mDragging = true;
 			mHandler.removeMessages(SHOW_PROGRESS);
 			mAM.setStreamMute(AudioManager.STREAM_MUSIC, true);
@@ -623,6 +624,7 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 		textView.setHighlightColor(Color.BLUE);
 	}
 	private ClickableSpan getClickableSpan(){
+		Log.d("测试","是否进入分词");
 		return new ClickableSpan() {
 			@Override
 			public void onClick(View widget) {
@@ -631,8 +633,7 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 						.getText()
 						.subSequence(tv.getSelectionStart(),
 								tv.getSelectionEnd()).toString();
-				Log.d("tapped on:", s);
-				Log.v("test123", s);
+				Log.d("测试", "翻译成功"+s);
 				Toast.makeText( SubtitleActivity.this, "翻译成功: " + s, Toast.LENGTH_SHORT).show();
 				ClipboardManager cmb = (ClipboardManager) SubtitleActivity.this
 						.getSystemService(Context.CLIPBOARD_SERVICE);

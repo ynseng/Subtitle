@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class SrtParser {
     //    public static TreeMap<Integer, SRT> srt_map;
     public static ArrayList<SRT>srtList;
+    public static ArrayList<SRT>srtList1;
     public static int lastEndTime;
     /**
      * 解析SRT字幕文件
@@ -31,6 +32,7 @@ public class SrtParser {
                     inputStream,"GB2312"));
             String line = null;
             srtList = new ArrayList<SRT>();
+            srtList1 = new ArrayList<SRT>();
             StringBuffer sb = new StringBuffer();
 //    int key = 0;
             while ((line = br.readLine()) != null) {
@@ -88,6 +90,7 @@ public class SrtParser {
 //    srt_map.put(key, srt);
 //    key++;
                 srtList.add(srt);
+                srtList1.add(srt);
                 sb.delete(0, sb.length());// 清空，否则影响下一个字幕元素的解析
             }
             lastEndTime=srtList.get(srtList.size()-1).getEndTime();
@@ -102,7 +105,7 @@ public class SrtParser {
 
     public static void showSRT(VideoView videoView,TextView tvSrt) {
 
-//    	Log.d("gaolei", "srt_map.size()--------------"+srt_map.size());
+//      Log.d("gaolei", "srt_map.size()--------------"+srt_map.size());
         int currentPosition = videoView.getCurrentPosition();//vv是VideoView播放器
 
         if(currentPosition>lastEndTime){
@@ -116,15 +119,22 @@ public class SrtParser {
                         && currentPosition < srtbean.getEndTime()) {
 
                     //Html.fromHtml可以解析出字幕内容的格式
-//    	Spanned srtBodyHtml = Html.fromHtml(srtbean
-//    	.getSrtBody());
+//      Spanned srtBodyHtml = Html.fromHtml(srtbean
+//      .getSrtBody());
                     tvSrt.setText(srtbean.getSrtBody(), TextView.BufferType.SPANNABLE);
                     //显示过的就删掉，提高查询效率，会出现后退无法找到字的问题
-                    //srtList.remove(i);
+                    srtList.remove(i);
                     break;//找到后就没必要继续遍历下去，节约资源
                 }
             }
         }
 
     }
+
+
+    public static void restoreSrtList(){
+        //没有找到,就还原
+        srtList = srtList1;
+    }
+
 }
