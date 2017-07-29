@@ -119,8 +119,8 @@ public class SrtParser {
 //    	Spanned srtBodyHtml = Html.fromHtml(srtbean
 //    	.getSrtBody());
                     tvSrt.setText(srtbean.getSrtBody(), TextView.BufferType.SPANNABLE);
-                    //显示过的就删掉，提高查询效率
-                    srtList.remove(i);
+                    //显示过的就删掉，提高查询效率，会出现后退无法找到字的问题
+                    //srtList.remove(i);
                     break;//找到后就没必要继续遍历下去，节约资源
                 }
             }

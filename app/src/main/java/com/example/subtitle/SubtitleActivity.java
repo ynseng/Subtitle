@@ -51,6 +51,8 @@ import viewlp.MainActivity;
  */
 public class SubtitleActivity extends Activity implements View.OnClickListener,OnTouchListener{
 
+	private String kedu = "0";
+
 	private VideoView videoView ;
 	TextView tvSrt, mCurrentTime,mTotalTime,resolution_switch,mediacontroller_file_name;
 	ImageView mediacontroller_play_pause,switch_screen;
@@ -64,7 +66,7 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 	private static final int CHANGE_VIDEOVIEW_BG = 3;
 	private static final int SCREEN_ORIENTATION_USER = 4;
 
-	private static final int sDefaultTimeout = 3000;
+	private static final int sDefaultTimeout = 6000;
 	private RelativeLayout videoview_layout, mMediaController;
 	private ListView resolution_listview;
 	private boolean isPortraint = true;
@@ -560,17 +562,45 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 		startActivity(new Intent(this, MainActivity.class));
 	}
 
-	public void onRestart(){
-		super.onRestart();
-		videoView.start();
+	/*public void onRestart(){
+		Log.d("测试","重启后的刻度："+kedu);
+		//progress_seekbar.setProgress(Integer.parseInt(kedu));
+		if(Integer.parseInt(kedu) > 0){
+			videoView.start();
+			videoView.seekTo(Integer.parseInt(kedu));
+			kedu = "0";
+		}
+		//videoView.start();
 		mediacontroller_play_pause.setImageResource(R.drawable.player_play);
+		super.onRestart();
+	}*/
+
+	@Override
+	protected void onResume() {
+		if (Integer.parseInt(kedu) > 0) {
+			Log.d("测试","重启后的刻度："+kedu);
+			videoView.start();
+			videoView.seekTo(Integer.parseInt(kedu));
+			videoView.pause();
+			kedu = "0";
+		}
+		super.onResume();
 	}
-	public void onStop(){
+
+	/*public void onStop(){
 		super.onStop();
 		videoView.pause();
 		mediacontroller_play_pause.setImageResource(R.drawable.player_pause);
+	}*/
 
+	public void onPause(){
+		kedu = videoView.getCurrentPosition() + "";
+		Log.d("测试","停止后的刻度：" + videoView.getCurrentPosition());
+		videoView.stopPlayback();
+		mediacontroller_play_pause.setImageResource(R.drawable.player_pause);
+		super.onPause();
 	}
+
 
 
 	//获取单个textview的单词
