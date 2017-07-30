@@ -86,8 +86,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp">
 
-        <VideoView
+        <com.example.subtitle.DLVideoView
             android:id="@+id/videoView"
+            android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -100,7 +101,7 @@
             android:layout_margin="5dp"
             android:gravity="center"
             android:padding="51dp"
-            android:textColor="#ffffff"
+            android:textColor="#FFD700"
             android:textSize="16sp" />
 
         <include

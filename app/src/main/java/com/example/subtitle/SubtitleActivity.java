@@ -21,6 +21,7 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -642,7 +643,7 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 			}
 			@Override
 			public void updateDrawState(TextPaint ds) {
-				ds.setColor(Color.WHITE);
+				ds.setColor(Color.YELLOW);
 				ds.setUnderlineText(false);
 			}
 		};
@@ -656,6 +657,24 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 			pos = s.indexOf(c, pos + 1);
 		}
 		return (Integer[]) indices.toArray(new Integer[0]);
+	}
+
+
+
+	//屏蔽返回键
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+		switch (keyCode) {
+			case KeyEvent.KEYCODE_BACK:
+				if (!isPortraint) {
+					RelativeLayout layout_1 = (RelativeLayout) findViewById(R.id.configPath);
+					layout_1.setVisibility(View.VISIBLE);//这一句即隐藏布局LinearLayout区域
+					handToSmallScreen();
+					return true;
+				}
+
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 
