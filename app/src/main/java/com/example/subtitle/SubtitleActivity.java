@@ -578,11 +578,12 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 
 	@Override
 	protected void onResume() {
+//		Log.d("测试","测试的刻度：" + videoView.getCurrentPosition());
 		if (Integer.parseInt(kedu) > 0) {
 			Log.d("测试","重启后的刻度："+kedu);
 			videoView.start();
 			videoView.seekTo(Integer.parseInt(kedu));
-			videoView.pause();
+			//videoView.pause();
 			kedu = "0";
 		}
 		super.onResume();
@@ -597,7 +598,7 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 	public void onPause(){
 		kedu = videoView.getCurrentPosition() + "";
 		Log.d("测试","停止后的刻度：" + videoView.getCurrentPosition());
-		videoView.stopPlayback();
+		videoView.pause();
 		mediacontroller_play_pause.setImageResource(R.drawable.player_pause);
 		super.onPause();
 	}
