@@ -306,15 +306,16 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 			if (!fromuser)
 				return;
 
-			int newposition = (int)(totalDuration * progress) / 1000;
-
-			String time = generateTime(newposition);
-			videoView.seekTo(newposition);
+			long newposition = (totalDuration * progress) / 1000;
+			String time = generateTime(((int)newposition));
+			Log.d("测试","位置：" + totalDuration +"  进度:"+progress +"  新位置" + newposition );
+			videoView.seekTo((int)newposition);
 			mCurrentTime.setText(time);
 		}
 
 		public void onStopTrackingTouch(SeekBar bar) {
-			videoView.seekTo(((int)totalDuration * bar.getProgress()) / 1000);
+			long newposition = (totalDuration * bar.getProgress()) / 1000;
+			videoView.seekTo(((int)newposition));
 			hideMediaController(sDefaultTimeout);
 			mAM.setStreamMute(AudioManager.STREAM_MUSIC, false);
 			mDragging = false;
