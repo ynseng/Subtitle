@@ -32,7 +32,9 @@ public class SrtParser {
                     inputStream,"GB2312"));
             String line = null;
             srtList = new ArrayList<SRT>();
-            srtList1 = new ArrayList<SRT>();
+            if(srtList1 == null || srtList1.size() < 1){
+                srtList1 = new ArrayList<SRT>();
+            }
             StringBuffer sb = new StringBuffer();
 //    int key = 0;
             while ((line = br.readLine()) != null) {

@@ -211,6 +211,15 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 		mHandler.sendEmptyMessageDelayed(0, 500);
 	}
 
+
+	//重装字幕
+	public void reZimuPath(View view) {
+		videoView.start();
+		SrtParser.parseSrt(this);
+		SrtParser.showSRT(videoView,tvSrt) ;
+	}
+
+
 	//选择视频文件
 	public void showVideoChooser(View view) {
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
