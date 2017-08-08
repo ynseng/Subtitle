@@ -592,8 +592,12 @@ public class SubtitleActivity extends Activity implements View.OnClickListener,O
 //		Log.d("测试","测试的刻度：" + videoView.getCurrentPosition());
 		if (Integer.parseInt(kedu) > 0) {
 			Log.d("测试","重启后的刻度："+kedu);
+			kedu = kedu.substring(0, kedu.length()-3)+"000";
+			Log.d("测试","调整重启后的刻度："+kedu);
 			videoView.start();
-			videoView.seekTo(Integer.parseInt(kedu));
+			videoView.seekTo(Integer.parseInt(kedu)-2000);
+			SrtParser.parseSrt(this);
+			SrtParser.showSRT(videoView,tvSrt) ;
 			//videoView.pause();
 			kedu = "0";
 		}
